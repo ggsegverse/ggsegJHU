@@ -19,36 +19,24 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![DOI](https://zenodo.org/badge/250280074.svg)](https://zenodo.org/badge/latestdoi/250280074)
-[![Codecov test coverage](https://codecov.io/gh/LCBC-UiO/ggsegJHU/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/ggsegJHU?branch=master)
-[![R build status](https://github.com/LCBC-UiO/ggsegJHU/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/ggsegJHU/actions)
+[![R-CMD-check](https://github.com/ggseg/ggsegJHU/workflows/R-CMD-check/badge.svg)](https://github.com/ggseg/ggsegJHU/actions)
 <!-- badges: end -->
 
-Contains data for ggseg and ggseg3d for the JHU white matter segmentation.
+Contains the JHU white matter atlas for the ggseg plotting ecosystem.
 
 Hua et al. (2008) NeuroImage, 39(1):336-347 [pubmed](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2724595/)
 
 ## Installation
-We recommend installing the ggseg-atlases through the ggseg [r-universe](https://ggseg.r-universe.dev/ui#builds):
 
-```{r eval = FALSE}
-# Enable this universe
-options(repos = c(
-    ggseg = 'https://ggseg.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
-
-# Install some packages
-install.packages('ggsegJHU')
-```
-
-You can install the development version from [GitHub](https://github.com/) with:
+You can install ggsegJHU from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("LCBC-UiO/ggsegJHU")
+# install.packages("remotes")
+remotes::install_github("ggseg/ggsegJHU")
 ```
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
 ```{r}
 library(ggsegJHU)
 ```
@@ -57,34 +45,34 @@ library(ggsegJHU)
 library(ggseg)
 library(ggplot2)
 
-plot(jhu) +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 7)) +
-  guides(fill = guide_legend(ncol = 2))
-
+ggplot() +
+  geom_brain(
+    atlas = jhu,
+    mapping = aes(fill = label),
+    position = position_brain(hemi ~ view),
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values = jhu$palette, na.value = "grey") +
+  theme_void()
 ```
 
 ```{r "noneval", eval=FALSE}
 library(ggseg3d)
-library(dplyr)
 
-ggseg3d(atlas = jhu_3d) %>% 
-  add_glassbrain("left") %>% 
+ggseg3d(atlas = jhu) |>
   pan_camera("right lateral")
 ```
 
 ```{r "orca", include=FALSE}
 library(ggseg3d)
-library(dplyr)
 
-p <- ggseg3d(atlas = jhu_3d) %>%
-  add_glassbrain("left") %>% 
-  pan_camera("right lateral") %>%
-  plotly::add_annotations( text="Screen capture",
-                  legendtitle=TRUE, showarrow=FALSE,
-                  font = list(color = "#000000b4",
-                              family = 'sans serif',
-                              size = 50))
+p <- ggseg3d(atlas = jhu) |>
+  pan_camera("right lateral") |>
+  plotly::add_annotations(text = "Screen capture",
+                          legendtitle = TRUE, showarrow = FALSE,
+                          font = list(color = "#000000b4",
+                                      family = "sans serif",
+                                      size = 50))
 plotly::orca(p, "man/figures/README-3d-plot.png")
 ```
 
