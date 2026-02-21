@@ -47,26 +47,26 @@ library(ggplot2)
 
 ggplot() +
   geom_brain(
-    atlas = jhu,
+    atlas = jhu(),
     mapping = aes(fill = label),
     position = position_brain(hemi ~ view),
     show.legend = FALSE
   ) +
-  scale_fill_manual(values = jhu$palette, na.value = "grey") +
+  scale_fill_manual(values = jhu()$palette, na.value = "grey") +
   theme_void()
 ```
 
 ```{r "noneval", eval=FALSE}
 library(ggseg3d)
 
-ggseg3d(atlas = jhu) |>
+ggseg3d(atlas = jhu()) |>
   pan_camera("right lateral")
 ```
 
 ```{r "orca", include=FALSE}
 library(ggseg3d)
 
-p <- ggseg3d(atlas = jhu) |>
+p <- ggseg3d(atlas = jhu()) |>
   pan_camera("right lateral") |>
   plotly::add_annotations(text = "Screen capture",
                           legendtitle = TRUE, showarrow = FALSE,
