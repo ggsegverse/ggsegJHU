@@ -12,6 +12,7 @@
 #' (\href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2724595/}{PubMed})
 #'
 #' @return A [ggseg.formats::ggseg_atlas] object (subcortical).
+#' @import ggseg.formats
 #' @export
 #' @examples
 #' jhu()

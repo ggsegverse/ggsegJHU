@@ -13,8 +13,8 @@ JHU white matter atlas for the 'ggseg' ecosystem. Provides a unified 'ggseg_atla
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ggseg/ggsegJHU}
-  \item Report bugs at \url{https://github.com/ggseg/ggsegJHU/issues}
+  \item \url{https://github.com/ggsegverse/ggsegJHU}
+  \item Report bugs at \url{https://github.com/ggsegverse/ggsegJHU/issues}
 }
 
 }
