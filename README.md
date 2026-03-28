@@ -1,77 +1,53 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ggsegJHU <img src='man/figures/logo.png' align="right" height="138.5" />
+# ggsegJHU
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/250280074.svg)](https://zenodo.org/badge/latestdoi/250280074)
-[![Codecov test
-coverage](https://codecov.io/gh/LCBC-UiO/ggsegJHU/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/ggsegJHU?branch=master)
-[![R build
-status](https://github.com/LCBC-UiO/ggsegJHU/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/ggsegJHU/actions)
+[![R-CMD-check](https://github.com/ggsegverse/ggsegJHU/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ggsegverse/ggsegJHU/actions/workflows/R-CMD-check.yaml)
+[![r-universe](https://ggsegverse.r-universe.dev/badges/ggsegJHU)](https://ggsegverse.r-universe.dev/ggsegJHU)
 <!-- badges: end -->
 
-Contains data for ggseg and ggseg3d for the JHU white matter
-segmentation.
-
-Hua et al. (2008) NeuroImage, 39(1):336-347
-[pubmed](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2724595/)
+JHU White Matter Atlases for the ggsegverse Ecosystem.
 
 ## Installation
 
-We recommend installing the ggseg-atlases through the ggseg
-[r-universe](https://ggseg.r-universe.dev/ui#builds):
-
 ``` r
-# Enable this universe
-options(repos = c(
-    ggseg = 'https://ggseg.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+# From r-universe
+install.packages("ggsegJHU", repos = "https://ggsegverse.r-universe.dev")
 
-# Install some packages
-install.packages('ggsegJHU')
+# From GitHub
+# install.packages("remotes")
+remotes::install_github("ggsegverse/ggsegJHU")
 ```
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+## Atlases
 
-``` r
-# install.packages("devtools")
-devtools::install_github("LCBC-UiO/ggsegJHU")
-```
+### jhu_tracts
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+JHU white matter tract atlas (20 tracts).
 
 ``` r
 library(ggsegJHU)
+plot(jhu_tracts())
 ```
+
+<img src="man/figures/README-jhu_tracts-1.png" alt="" width="100%" />
+
+### jhu_labels
+
+ICBM-DTI-81 white matter labels (48 regions).
 
 ``` r
-library(ggseg)
-library(ggplot2)
-
-plot(jhu) +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 7)) +
-  guides(fill = guide_legend(ncol = 2))
+plot(jhu_labels())
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-jhu_labels-1.png" alt="" width="100%" />
+\## Data source
 
-``` r
-library(ggseg3d)
-library(dplyr)
+JHU-ICBM white matter atlases from FSL.
 
-ggseg3d(atlas = jhu_3d) %>% 
-  add_glassbrain("left") %>% 
-  pan_camera("right lateral")
-```
-
-<img src="man/figures/README-3d-plot.png" width="100%" />
-
-Please note that the ‘ggsegJHU’ project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+- **Reference**: Hua et al. (2008) NeuroImage 39(1):336-347; Mori et
+  al. (2005)
+- **Date obtained**: 2020-03-27
