@@ -9,6 +9,9 @@
 #' @return A [ggseg.formats::ggseg_atlas] object (subcortical).
 #' @import ggseg.formats
 #' @export
+#' @examples
+#' jhu_tracts()
+#' plot(jhu_tracts())
 jhu_tracts <- function() .jhu_tracts
 
 #' JHU ICBM-DTI-81 White Matter Labels
@@ -20,4 +23,7 @@ jhu_tracts <- function() .jhu_tracts
 #'   Elsevier. ISBN: 978-0444517418
 #' @return A [ggseg.formats::ggseg_atlas] object (subcortical).
 #' @export
+#' @examples
+#' jhu_labels()
+#' plot(jhu_labels())
 jhu_labels <- function() .jhu_labels

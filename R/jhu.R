@@ -39,3 +39,29 @@
 #' @examples
 #' data(jhu_3d)
 "jhu_3d"
+
+
+## WM segments (ICBM-DTI-81 labels) ----
+
+#' JHU ICBM-DTI-81 White Matter Labels (Segments)
+#'
+#' Volumetric white matter segmentation atlas from the JHU ICBM-DTI-81
+#' white matter labels. Contains 48 labeled white matter structures
+#' derived from a probabilistic atlas of 81 normal subjects. This
+#' complements the JHU white matter tracts atlas with region-based
+#' segmentation.
+#'
+#' @docType data
+#' @name jhu_seg
+#' @keywords datasets
+#' @family ggseg_atlases
+#' @references Mori S, et al. (2005). MRI Atlas of Human White Matter.
+#' Elsevier. ISBN: 978-0444517418
+#'
+#' Wakana S, et al. (2007). Reproducibility of quantitative tractography
+#' methods applied to cerebral white matter. NeuroImage, 36(3):630-644.
+#' (\href{https://doi.org/10.1016/j.neuroimage.2007.02.049}{DOI})
+#'
+#' @examples
+#' data(jhu_seg)
+"jhu_seg"
