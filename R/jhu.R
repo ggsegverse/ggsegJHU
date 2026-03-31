@@ -6,6 +6,7 @@
 #' @name jhu
 #' @keywords datasets
 #' @family ggseg_atlases
+#' @family tract_atlases
 #' @references Hua et al. (2008) NeuroImage, 39(1):336-347 
 #' (\href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2724595/}{PubMed})
 #'
@@ -55,6 +56,7 @@
 #' @name jhu_seg
 #' @keywords datasets
 #' @family ggseg_atlases
+#' @family tract_atlases
 #' @references Mori S, et al. (2005). MRI Atlas of Human White Matter.
 #' Elsevier. ISBN: 978-0444517418
 #'
