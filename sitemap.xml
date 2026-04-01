@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://lcbc-uio.github.io/ggsegJHU//index.html</loc>
-  </url>
-  <url>
-    <loc>https://lcbc-uio.github.io/ggsegJHU//reference/jhu.html</loc>
-  </url>
-  <url>
-    <loc>https://lcbc-uio.github.io/ggsegJHU//reference/jhu_3d.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/404.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/LICENSE-text.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/LICENSE.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/authors.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/index.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/news/index.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/reference/ggsegJHU-package.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/reference/icbm.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/reference/index.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/reference/jhu_labels.html</loc></url>
+<url><loc>https://ggsegverse.github.io/ggsegJHU/reference/jhu_tracts.html</loc></url>
 </urlset>
+

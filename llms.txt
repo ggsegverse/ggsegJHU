@@ -1,0 +1,57 @@
+# ggsegJHU
+
+JHU White Matter Atlases for the ggsegverse Ecosystem.
+
+## Installation
+
+``` r
+# From r-universe
+install.packages("ggsegJHU", repos = "https://ggsegverse.r-universe.dev")
+
+# From GitHub
+# install.packages("remotes")
+remotes::install_github("ggsegverse/ggsegJHU")
+```
+
+## Atlases
+
+### jhu_tracts
+
+JHU white matter tract atlas (20 tracts).
+
+``` r
+library(ggsegJHU)
+plot(jhu_tracts())
+```
+
+![](reference/figures/README-jhu_tracts-1.png)
+
+### jhu_labels
+
+ICBM-DTI-81 white matter labels (48 regions).
+
+``` r
+plot(jhu_labels())
+```
+
+![](reference/figures/README-jhu_labels-1.png) \## Data source
+
+JHU-ICBM white matter atlases from FSL.
+
+- **Reference**: Hua et al. (2008) NeuroImage 39(1):336-347; Mori et
+  al. (2005)
+- **Date obtained**: 2020-03-27
+
+# Package index
+
+## Atlases
+
+JHU and ICBM white matter atlases
+
+- [`icbm()`](https://ggsegverse.github.io/ggsegJHU/reference/icbm.md) :
+  ICBM-DTI-81 White Matter Atlas
+- [`jhu_labels()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_labels.md)
+  : JHU ICBM-DTI-81 White Matter Labels
+- [`jhu_tracts()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_tracts.md)
+  : JHU White Matter Tract Atlas
+
