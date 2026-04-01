@@ -1,0 +1,67 @@
+---
+format: gfm
+---
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.width = 10,
+  fig.retina = 3
+)
+```
+
+# ggsegJHU
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ggsegverse/ggsegJHU/workflows/R-CMD-check/badge.svg)](https://github.com/ggsegverse/ggsegJHU/actions)
+<!-- badges: end -->
+
+This package provides JHU and ICBM white matter atlases formatted for
+use with [ggseg](https://ggseg.github.io/ggseg/) and
+[ggseg3d](https://ggseg.github.io/ggseg3d/).
+
+| Atlas | Function | Regions | Reference |
+|-------|----------|---------|-----------|
+| JHU Tracts | `jhu_tracts()` | 20 | Hua et al. (2008) |
+| JHU ICBM-DTI-81 Labels | `jhu_labels()` | 48 | Mori et al. (2005) |
+| ICBM DTI-81 | `icbm()` | 26 | Mori et al. (2005) |
+
+To learn how to use these atlases, please look at the documentation for
+[ggseg](https://ggseg.github.io/ggseg/) and
+[ggseg3d](https://ggseg.github.io/ggseg3d/).
+
+## Installation
+
+You can install ggsegJHU from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("ggsegverse/ggsegJHU")
+```
+
+## Atlases
+
+```{r}
+#| label: jhu-tracts
+library(ggseg3d)
+library(ggsegJHU)
+
+ggseg3d(atlas = jhu_tracts())
+```
+
+```{r}
+#| label: jhu-labels
+ggseg3d(atlas = jhu_labels())
+```
+
+```{r}
+#| label: icbm
+ggseg3d(atlas = icbm())
+```

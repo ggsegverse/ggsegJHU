@@ -22,9 +22,17 @@ jhu_tracts <- create_subcortical_from_volume(
   input_volume = here::here("data-raw", "JHU-ICBM-tracts-maxprob-thr25-1mm.nii.gz"),
   atlas_name = "jhu_tracts",
   output_dir = "data-raw",
-  skip_existing = TRUE,
+  skip_existing = FALSE,
   cleanup = FALSE
 )
+
+if (is.null(jhu_tracts$palette) || length(jhu_tracts$palette) == 0) {
+  labels <- jhu_tracts$core$label[!is.na(jhu_tracts$core$label)]
+  jhu_tracts$palette <- setNames(
+    grDevices::hcl.colors(length(labels), palette = "Set2"),
+    labels
+  )
+}
 
 print(jhu_tracts)
 plot(jhu_tracts)
@@ -34,9 +42,17 @@ jhu_labels <- create_subcortical_from_volume(
   input_volume = here::here("data-raw", "JHU-ICBM-labels-1mm.nii.gz"),
   atlas_name = "jhu_labels",
   output_dir = "data-raw",
-  skip_existing = TRUE,
+  skip_existing = FALSE,
   cleanup = FALSE
 )
+
+if (is.null(jhu_labels$palette) || length(jhu_labels$palette) == 0) {
+  labels <- jhu_labels$core$label[!is.na(jhu_labels$core$label)]
+  jhu_labels$palette <- setNames(
+    grDevices::hcl.colors(length(labels), palette = "Set2"),
+    labels
+  )
+}
 
 print(jhu_labels)
 plot(jhu_labels)

@@ -1,4 +1,13 @@
-# ggsegJHU 1.0.01
+# ggsegJHU 2.0.0
 
-* adapted atlases to ggseg <= 1.6.0
-* Added a `NEWS.md` file to track changes to the package.
+## Breaking changes
+* `jhu` and `jhu_3d` data objects have been removed
+* Use `jhu_tracts()` and `jhu_labels()` accessor functions instead
+* `ggseg.formats` is now a hard dependency
+
+## Minor changes
+* Added `icbm()` atlas (formerly in `ggsegICBM` package)
+* Package URLs updated to `ggsegverse` GitHub organisation
+
+# ggsegJHU 1.0.01
+* Adapted atlases to ggseg <= 1.6.0

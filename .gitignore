@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 docs/
+data-raw/**/*.nii
+data-raw/**/*.nii.gz
+data-raw/**/*.mgz
