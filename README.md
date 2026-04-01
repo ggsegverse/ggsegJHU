@@ -1,53 +1,56 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 # ggsegJHU
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ggsegverse/ggsegJHU/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ggsegverse/ggsegJHU/actions/workflows/R-CMD-check.yaml)
-[![r-universe](https://ggsegverse.r-universe.dev/badges/ggsegJHU)](https://ggsegverse.r-universe.dev/ggsegJHU)
+[![R-CMD-check](https://github.com/ggsegverse/ggsegJHU/workflows/R-CMD-check/badge.svg)](https://github.com/ggsegverse/ggsegJHU/actions)
 <!-- badges: end -->
 
-JHU White Matter Atlases for the ggsegverse Ecosystem.
+This package provides JHU and ICBM white matter atlases formatted for
+use with [ggseg](https://ggseg.github.io/ggseg/) and
+[ggseg3d](https://ggseg.github.io/ggseg3d/).
+
+| Atlas                  | Function       | Regions | Reference          |
+|------------------------|----------------|---------|--------------------|
+| JHU Tracts             | `jhu_tracts()` | 20      | Hua et al. (2008)  |
+| JHU ICBM-DTI-81 Labels | `jhu_labels()` | 48      | Mori et al. (2005) |
+| ICBM DTI-81            | `icbm()`       | 26      | Mori et al. (2005) |
+
+To learn how to use these atlases, please look at the documentation for
+[ggseg](https://ggseg.github.io/ggseg/) and
+[ggseg3d](https://ggseg.github.io/ggseg3d/).
 
 ## Installation
 
-``` r
-# From r-universe
-install.packages("ggsegJHU", repos = "https://ggsegverse.r-universe.dev")
+You can install ggsegJHU from [GitHub](https://github.com/) with:
 
-# From GitHub
+``` r
 # install.packages("remotes")
 remotes::install_github("ggsegverse/ggsegJHU")
 ```
 
 ## Atlases
 
-### jhu_tracts
-
-JHU white matter tract atlas (20 tracts).
-
 ``` r
+library(ggseg3d)
 library(ggsegJHU)
-plot(jhu_tracts())
+
+ggseg3d(atlas = jhu_tracts())
 ```
 
-<img src="man/figures/README-jhu_tracts-1.png" alt="" width="100%" />
-
-### jhu_labels
-
-ICBM-DTI-81 white matter labels (48 regions).
+<img src="man/figures/README-jhu-tracts-1.png" style="width:100.0%" />
 
 ``` r
-plot(jhu_labels())
+ggseg3d(atlas = jhu_labels())
 ```
 
-<img src="man/figures/README-jhu_labels-1.png" alt="" width="100%" />
-\## Data source
+<img src="man/figures/README-jhu-labels-1.png" style="width:100.0%" />
 
-JHU-ICBM white matter atlases from FSL.
+``` r
+ggseg3d(atlas = icbm())
+```
 
-- **Reference**: Hua et al. (2008) NeuroImage 39(1):336-347; Mori et
-  al. (2005)
-- **Date obtained**: 2020-03-27
+<img src="man/figures/README-icbm-1.png" style="width:100.0%" />
