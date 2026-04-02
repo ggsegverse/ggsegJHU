@@ -72,45 +72,65 @@
 </div>
 <!-- badges: start -->
 
-<p>JHU White Matter Atlases for the ggsegverse Ecosystem.</p>
+<p>This package provides JHU and ICBM white matter atlases formatted for use with <a href="https://ggseg.github.io/ggseg/" class="external-link">ggseg</a> and <a href="https://ggseg.github.io/ggseg3d/" class="external-link">ggseg3d</a>.</p>
+<table class="table">
+<colgroup>
+<col width="34%">
+<col width="23%">
+<col width="13%">
+<col width="28%">
+</colgroup>
+<thead><tr class="header">
+<th>Atlas</th>
+<th>Function</th>
+<th>Regions</th>
+<th>Reference</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>JHU Tracts</td>
+<td><code><a href="reference/jhu_tracts.html">jhu_tracts()</a></code></td>
+<td>20</td>
+<td>Hua et al. (2008)</td>
+</tr>
+<tr class="even">
+<td>JHU ICBM-DTI-81 Labels</td>
+<td><code><a href="reference/jhu_labels.html">jhu_labels()</a></code></td>
+<td>48</td>
+<td>Mori et al. (2005)</td>
+</tr>
+<tr class="odd">
+<td>ICBM DTI-81</td>
+<td><code><a href="reference/icbm.html">icbm()</a></code></td>
+<td>26</td>
+<td>Mori et al. (2005)</td>
+</tr>
+</tbody>
+</table>
+<p>To learn how to use these atlases, please look at the documentation for <a href="https://ggseg.github.io/ggseg/" class="external-link">ggseg</a> and <a href="https://ggseg.github.io/ggseg3d/" class="external-link">ggseg3d</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
+<p>You can install ggsegJHU from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># From r-universe</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ggsegJHU"</span>, repos <span class="op">=</span> <span class="st">"https://ggsegverse.r-universe.dev"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># From GitHub</span></span>
-<span><span class="co"># install.packages("remotes")</span></span>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ggsegverse/ggsegJHU"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="atlases">Atlases<a class="anchor" aria-label="anchor" href="#atlases"></a>
 </h2>
-<div class="section level3">
-<h3 id="jhu_tracts">jhu_tracts<a class="anchor" aria-label="anchor" href="#jhu_tracts"></a>
-</h3>
-<p>JHU white matter tract atlas (20 tracts).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ggsegverse/ggsegJHU" class="external-link">ggsegJHU</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/jhu_tracts.html">jhu_tracts</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-jhu_tracts-1.png" alt="" width="100%"></p>
-</div>
-<div class="section level3">
-<h3 id="jhu_labels">jhu_labels<a class="anchor" aria-label="anchor" href="#jhu_labels"></a>
-</h3>
-<p>ICBM-DTI-81 white matter labels (48 regions).</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ggsegverse/ggseg3d" class="external-link">ggseg3d</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ggsegverse/ggsegJHU" class="external-link">ggsegJHU</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggsegverse.github.io/ggseg3d/reference/ggseg3d.html" class="external-link">ggseg3d</a></span><span class="op">(</span>atlas <span class="op">=</span> <span class="fu"><a href="reference/jhu_tracts.html">jhu_tracts</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-jhu-tracts-1.png" style="width:100.0%"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/jhu_labels.html">jhu_labels</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-jhu_labels-1.png" alt="" width="100%"> ## Data source</p>
-<p>JHU-ICBM white matter atlases from FSL.</p>
-<ul>
-<li>
-<strong>Reference</strong>: Hua et al. (2008) NeuroImage 39(1):336-347; Mori et al. (2005)</li>
-<li>
-<strong>Date obtained</strong>: 2020-03-27</li>
-</ul>
-</div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggsegverse.github.io/ggseg3d/reference/ggseg3d.html" class="external-link">ggseg3d</a></span><span class="op">(</span>atlas <span class="op">=</span> <span class="fu"><a href="reference/jhu_labels.html">jhu_labels</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-jhu-labels-1.png" style="width:100.0%"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggsegverse.github.io/ggseg3d/reference/ggseg3d.html" class="external-link">ggseg3d</a></span><span class="op">(</span>atlas <span class="op">=</span> <span class="fu"><a href="reference/icbm.html">icbm</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-icbm-1.png" style="width:100.0%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -154,8 +174,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ggsegverse/ggsegJHU/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ggsegverse/ggsegJHU/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://ggsegverse.r-universe.dev/ggsegJHU" class="external-link"><img src="https://ggsegverse.r-universe.dev/badges/ggsegJHU" alt="r-universe"></a></li>
+<li><a href="https://github.com/ggsegverse/ggsegJHU/actions" class="external-link"><img src="https://github.com/ggsegverse/ggsegJHU/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
