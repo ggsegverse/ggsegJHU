@@ -26,12 +26,10 @@ analyses of white matter anatomy and tract-specific quantification.
 ## See also
 
 Other ggseg_atlases:
-[`icbm()`](https://ggsegverse.github.io/ggsegJHU/reference/icbm.md),
-[`jhu_labels()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_labels.md)
+[`jhu_wm()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_wm.md)
 
 Other tract_atlases:
-[`icbm()`](https://ggsegverse.github.io/ggsegJHU/reference/icbm.md),
-[`jhu_labels()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_labels.md)
+[`jhu_wm()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_wm.md)
 
 ## Examples
 
@@ -40,35 +38,35 @@ jhu_tracts()
 #> 
 #> ── jhu_tracts ggseg atlas ──────────────────────────────────────────────────────
 #> Type: subcortical
-#> Regions: 20
-#> Hemispheres: NA
+#> Regions: 11
+#> Hemispheres: left, right, midline
 #> Views: axial_1, axial_2, axial_3, axial_4, axial_5, coronal_3, coronal_4,
 #> sagittal, coronal_1, coronal_2
-#> Palette: ✖
+#> Palette: ✔
 #> Rendering: ✔ ggseg
 #> ✔ ggseg3d (meshes)
 #> ────────────────────────────────────────────────────────────────────────────────
-#> # A tibble: 20 × 3
-#>    hemi  region      label      
-#>    <chr> <chr>       <chr>      
-#>  1 NA    region 0001 region_0001
-#>  2 NA    region 0002 region_0002
-#>  3 NA    region 0003 region_0003
-#>  4 NA    region 0004 region_0004
-#>  5 NA    region 0005 region_0005
-#>  6 NA    region 0006 region_0006
-#>  7 NA    region 0007 region_0007
-#>  8 NA    region 0008 region_0008
-#>  9 NA    region 0009 region_0009
-#> 10 NA    region 0010 region_0010
-#> 11 NA    region 0011 region_0011
-#> 12 NA    region 0012 region_0012
-#> 13 NA    region 0013 region_0013
-#> 14 NA    region 0014 region_0014
-#> 15 NA    region 0015 region_0015
-#> 16 NA    region 0016 region_0016
-#> 17 NA    region 0017 region_0017
-#> 18 NA    region 0018 region_0018
-#> 19 NA    region 0019 region_0019
-#> 20 NA    region 0020 region_0020
+#> # A tibble: 20 × 4
+#>    hemi    region                                      label   group      
+#>    <chr>   <chr>                                       <chr>   <chr>      
+#>  1 left    anterior thalamic radiation                 lh_atr  projection 
+#>  2 right   anterior thalamic radiation                 rh_atr  projection 
+#>  3 left    corticospinal tract                         lh_cst  projection 
+#>  4 right   corticospinal tract                         rh_cst  projection 
+#>  5 left    cingulum (cingulate gyrus)                  lh_ccg  limbic     
+#>  6 right   cingulum (cingulate gyrus)                  rh_ccg  limbic     
+#>  7 left    cingulum (hippocampus)                      lh_chip limbic     
+#>  8 right   cingulum (hippocampus)                      rh_chip limbic     
+#>  9 midline forceps major                               forcmaj commissure 
+#> 10 midline forceps minor                               forcmin commissure 
+#> 11 left    inferior fronto-occipital fasciculus        lh_ifof association
+#> 12 right   inferior fronto-occipital fasciculus        rh_ifof association
+#> 13 left    inferior longitudinal fasciculus            lh_ilf  association
+#> 14 right   inferior longitudinal fasciculus            rh_ilf  association
+#> 15 left    superior longitudinal fasciculus            lh_slf  association
+#> 16 right   superior longitudinal fasciculus            rh_slf  association
+#> 17 left    superior longitudinal fasciculus (temporal) lh_sltf association
+#> 18 right   superior longitudinal fasciculus (temporal) rh_sltf association
+#> 19 left    uncinate fasciculus                         lh_uncf association
+#> 20 right   uncinate fasciculus                         rh_uncf association
 ```

@@ -7,8 +7,8 @@ use with [ggseg](https://ggseg.github.io/ggseg/) and
 | Atlas                  | Function                                                                        | Regions | Reference          |
 |------------------------|---------------------------------------------------------------------------------|---------|--------------------|
 | JHU Tracts             | [`jhu_tracts()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_tracts.md) | 20      | Hua et al. (2008)  |
-| JHU ICBM-DTI-81 Labels | [`jhu_labels()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_labels.md) | 48      | Mori et al. (2005) |
-| ICBM DTI-81            | [`icbm()`](https://ggsegverse.github.io/ggsegJHU/reference/icbm.md)             | 26      | Mori et al. (2005) |
+| JHU ICBM-DTI-81 Labels | `jhu_labels()`                                                                  | 48      | Mori et al. (2005) |
+| ICBM DTI-81            | [`icbm()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_wm.md)           | 26      | Mori et al. (2005) |
 
 To learn how to use these atlases, please look at the documentation for
 [ggseg](https://ggseg.github.io/ggseg/) and
