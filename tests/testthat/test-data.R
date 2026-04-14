@@ -1,5 +1,5 @@
 atlas_names <- c(
-  "jhu_tracts", "jhu_labels", "icbm"
+  "jhu_tracts", "jhu_wm", "icbm"
 )
 
 for (nm in atlas_names) {
@@ -17,6 +17,7 @@ for (nm in atlas_names) {
 
     it("renders with ggseg3d", {
       skip_if_not_installed("ggseg3d")
+      skip_if_not_installed("ggseg.meshes")
       p <- ggseg3d::ggseg3d(atlas = atlas)
       expect_s3_class(
         p, c("plotly", "htmlwidget")
