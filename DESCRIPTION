@@ -27,6 +27,8 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0),
     vdiffr
+Remotes:
+    ggsegverse/ggseg
 URL: https://github.com/ggsegverse/ggsegJHU
 BugReports: https://github.com/ggsegverse/ggsegJHU/issues
 Roxygen: list(markdown = TRUE)
