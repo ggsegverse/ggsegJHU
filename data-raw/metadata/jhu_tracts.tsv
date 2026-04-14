@@ -1,0 +1,21 @@
+idx	label	region	hemi	group
+1	atr	anterior thalamic radiation	left	projection
+2	atr	anterior thalamic radiation	right	projection
+3	cst	corticospinal tract	left	projection
+4	cst	corticospinal tract	right	projection
+5	ccg	cingulum (cingulate gyrus)	left	limbic
+6	ccg	cingulum (cingulate gyrus)	right	limbic
+7	chip	cingulum (hippocampus)	left	limbic
+8	chip	cingulum (hippocampus)	right	limbic
+9	forcmaj	forceps major	midline	commissure
+10	forcmin	forceps minor	midline	commissure
+11	ifof	inferior fronto-occipital fasciculus	left	association
+12	ifof	inferior fronto-occipital fasciculus	right	association
+13	ilf	inferior longitudinal fasciculus	left	association
+14	ilf	inferior longitudinal fasciculus	right	association
+15	slf	superior longitudinal fasciculus	left	association
+16	slf	superior longitudinal fasciculus	right	association
+17	sltf	superior longitudinal fasciculus (temporal)	left	association
+18	sltf	superior longitudinal fasciculus (temporal)	right	association
+19	uncf	uncinate fasciculus	left	association
+20	uncf	uncinate fasciculus	right	association

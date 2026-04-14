@@ -1,0 +1,49 @@
+idx	label	region	hemi	group
+1	mcp	middle cerebellar peduncle	midline	brainstem
+2	pct	pontine crossing tract	midline	brainstem
+3	gcc	genu of corpus callosum	midline	commissure
+4	bcc	body of corpus callosum	midline	commissure
+5	scc	splenium of corpus callosum	midline	commissure
+6	fornix	fornix (column and body)	midline	limbic
+7	cst	corticospinal tract	right	projection
+8	cst	corticospinal tract	left	projection
+9	mlemn	medial lemniscus	right	brainstem
+10	mlemn	medial lemniscus	left	brainstem
+11	icp	inferior cerebellar peduncle	right	brainstem
+12	icp	inferior cerebellar peduncle	left	brainstem
+13	scp	superior cerebellar peduncle	right	brainstem
+14	scp	superior cerebellar peduncle	left	brainstem
+15	cp	cerebral peduncle	right	projection
+16	cp	cerebral peduncle	left	projection
+17	alic	anterior limb of internal capsule	right	projection
+18	alic	anterior limb of internal capsule	left	projection
+19	plic	posterior limb of internal capsule	right	projection
+20	plic	posterior limb of internal capsule	left	projection
+21	ric	retrolenticular part of internal capsule	right	projection
+22	ric	retrolenticular part of internal capsule	left	projection
+23	acr	anterior corona radiata	right	projection
+24	acr	anterior corona radiata	left	projection
+25	scr	superior corona radiata	right	projection
+26	scr	superior corona radiata	left	projection
+27	pcr	posterior corona radiata	right	projection
+28	pcr	posterior corona radiata	left	projection
+29	ptr	posterior thalamic radiation	right	projection
+30	ptr	posterior thalamic radiation	left	projection
+31	sags	sagittal stratum	right	association
+32	sags	sagittal stratum	left	association
+33	exc	external capsule	right	association
+34	exc	external capsule	left	association
+35	ccg	cingulum (cingulate gyrus)	right	limbic
+36	ccg	cingulum (cingulate gyrus)	left	limbic
+37	chip	cingulum (hippocampus)	right	limbic
+38	chip	cingulum (hippocampus)	left	limbic
+39	forcr	fornix (cres) / stria terminalis	right	limbic
+40	forcr	fornix (cres) / stria terminalis	left	limbic
+41	slf	superior longitudinal fasciculus	right	association
+42	slf	superior longitudinal fasciculus	left	association
+43	sfof	superior fronto-occipital fasciculus	right	association
+44	sfof	superior fronto-occipital fasciculus	left	association
+45	uncf	uncinate fasciculus	right	association
+46	uncf	uncinate fasciculus	left	association
+47	tap	tapetum	right	commissure
+48	tap	tapetum	left	commissure

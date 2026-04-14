@@ -1,9 +1,11 @@
-atlas_names <- c(
-  "jhu_tracts", "jhu_wm", "icbm"
+atlas_funs <- list(
+  jhu_tracts = jhu_tracts,
+  jhu_wm = jhu_wm,
+  icbm = icbm
 )
 
-for (nm in atlas_names) {
-  atlas <- do.call(nm, list())
+for (nm in names(atlas_funs)) {
+  atlas <- atlas_funs[[nm]]()
 
   describe(paste(nm, "atlas"), {
     it("is a ggseg_atlas", {
