@@ -77,40 +77,7 @@ tract-specific quantification. <em>NeuroImage</em>, 39(1):336-347.
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">jhu_tracts</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">jhu_tracts ggseg atlas</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Type: subcortical</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Regions:</span> 11</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Hemispheres:</span> left, right, midline</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Views:</span> axial_1, axial_2, axial_3, axial_4, axial_5, coronal_3, coronal_4,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> sagittal, coronal_1, coronal_2</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Palette:</span> <span style="color: #00BB00;">✔</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rendering:</span> <span style="color: #00BB00;">✔</span> ggseg</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> ggseg3d (meshes)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    hemi    region                                      label   group      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> left    anterior thalamic radiation                 lh_atr  projection </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> right   anterior thalamic radiation                 rh_atr  projection </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> left    corticospinal tract                         lh_cst  projection </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> right   corticospinal tract                         rh_cst  projection </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> left    cingulum (cingulate gyrus)                  lh_ccg  limbic     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> right   cingulum (cingulate gyrus)                  rh_ccg  limbic     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> left    cingulum (hippocampus)                      lh_chip limbic     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> right   cingulum (hippocampus)                      rh_chip limbic     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> midline forceps major                               forcmaj commissure </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> midline forceps minor                               forcmin commissure </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> left    inferior fronto-occipital fasciculus        lh_ifof association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> right   inferior fronto-occipital fasciculus        rh_ifof association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> left    inferior longitudinal fasciculus            lh_ilf  association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> right   inferior longitudinal fasciculus            rh_ilf  association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> left    superior longitudinal fasciculus            lh_slf  association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> right   superior longitudinal fasciculus            rh_slf  association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> left    superior longitudinal fasciculus (temporal) lh_sltf association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> right   superior longitudinal fasciculus (temporal) rh_sltf association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> left    uncinate fasciculus                         lh_uncf association</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> right   uncinate fasciculus                         rh_uncf association</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in jhu_tracts():</span> could not find function "jhu_tracts"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
