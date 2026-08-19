@@ -64,6 +64,7 @@ build_lut <- function(meta_path) {
         hemi == "right" ~ "rh_",
         TRUE ~ ""
       ),
+      # nolint next: object_usage_linter. dplyr NSE column reference.
       label_full = paste0(hemi_prefix, label),
       hex = unname(family_palette[label])
     )
@@ -87,14 +88,18 @@ enrich_core <- function(atlas, meta_path) {
         hemi == "right" ~ "rh_",
         TRUE ~ ""
       ),
+      # nolint next: object_usage_linter. dplyr NSE column reference.
       label_full = paste0(hemi_prefix, label)
     ) |>
+    # nolint next: object_usage_linter. dplyr NSE column reference.
     select(label = label_full, region, group, hemi_meta = hemi)
 
   core_enriched <- atlas$core |>
     select(-any_of("region")) |>
     left_join(meta, by = "label") |>
+    # nolint next: object_usage_linter. dplyr NSE column reference.
     mutate(hemi = coalesce(hemi_meta, hemi)) |>
+    # nolint next: object_usage_linter. dplyr NSE column reference.
     select(hemi, region, label, group)
 
   ggseg_atlas(
