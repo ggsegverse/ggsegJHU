@@ -34,10 +34,8 @@ progressr::handlers("cli")
 progressr::handlers(global = TRUE)
 
 # ── Obtain JHU ICBM-DTI-81 labels volume ─────────────────────────
-# The JHU labels atlas ships with FSL. If FSL is installed:
-# fsl_dir <- Sys.getenv("FSLDIR")
-# vol_file <- file.path(fsl_dir, "data", "atlases", "JHU",
-#                        "JHU-ICBM-labels-1mm.nii.gz")
+# The JHU labels atlas ships with FSL. If FSL is installed, the volume is at
+# JHU-ICBM-labels-1mm.nii.gz under data/atlases/JHU in $FSLDIR.
 #
 # Otherwise download from NeuroVault or place manually:
 
@@ -58,7 +56,8 @@ if (!file.exists(vol_file)) {
   } else {
     cli::cli_abort(c(
       "JHU labels volume not found",
-      "i" = "Copy from FSL: {.path $FSLDIR/data/atlases/JHU/JHU-ICBM-labels-1mm.nii.gz}",
+      "i" = "Copy from FSL: \\
+             {.path $FSLDIR/data/atlases/JHU/JHU-ICBM-labels-1mm.nii.gz}",
       "i" = "Or download from: {.url https://neurovault.org/collections/262/}"
     ))
   }
