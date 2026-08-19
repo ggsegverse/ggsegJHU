@@ -2,27 +2,22 @@
 % Please edit documentation in R/jhu_wm.R
 \name{jhu_wm}
 \alias{jhu_wm}
-\alias{icbm}
-\title{ICBM-DTI-81 White Matter Atlases}
+\title{ICBM-DTI-81 White Matter Atlas}
 \usage{
 jhu_wm()
-
-icbm()
 }
 \value{
 A \link[ggseg.formats:ggseg_atlas]{ggseg.formats::ggseg_atlas} object (subcortical).
 }
 \description{
-White matter label atlases derived from the ICBM DTI-81
-probabilistic atlas of 81 normal subjects.
-}
-\details{
-\code{jhu_wm()} provides the full 48-region atlas with both 2D and
-3D geometry. \code{icbm()} is a legacy variant with 3D geometry only.
+White matter label atlas derived from the ICBM DTI-81
+probabilistic atlas of 81 normal subjects, with 48 regions
+projected onto the FreeSurfer \code{cvs_avg35_inMNI152} anatomical
+grid for cortical-reference context and smoother boundaries.
 }
 \examples{
 jhu_wm()
-icbm()
+plot(jhu_wm())
 }
 \references{
 Mori S, et al. (2005). MRI Atlas of Human White

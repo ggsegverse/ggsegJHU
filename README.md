@@ -13,11 +13,10 @@ This package provides JHU and ICBM white matter atlases formatted for
 use with [ggseg](https://ggseg.github.io/ggseg/) and
 [ggseg3d](https://ggseg.github.io/ggseg3d/).
 
-| Atlas                  | Function       | Regions | Reference          |
-|------------------------|----------------|---------|--------------------|
-| JHU Tracts             | `jhu_tracts()` | 20      | Hua et al. (2008)  |
-| JHU ICBM-DTI-81 Labels | `jhu_labels()` | 48      | Mori et al. (2005) |
-| ICBM DTI-81            | `icbm()`       | 26      | Mori et al. (2005) |
+| Atlas                  | Function       | Regions    | Reference          |
+|------------------------|----------------|------------|--------------------|
+| JHU Tracts             | `jhu_tracts()` | 20 tracts  | Hua et al. (2008)  |
+| JHU ICBM-DTI-81 Labels | `jhu_wm()`     | 48 regions | Mori et al. (2005) |
 
 To learn how to use these atlases, please look at the documentation for
 [ggseg](https://ggseg.github.io/ggseg/) and
@@ -35,22 +34,24 @@ remotes::install_github("ggsegverse/ggsegJHU")
 ## Atlases
 
 ``` r
-library(ggseg3d)
 library(ggsegJHU)
 
-ggseg3d(atlas = jhu_tracts())
+plot(jhu_tracts())
 ```
 
 <img src="man/figures/README-jhu-tracts-1.png" style="width:100.0%" />
 
 ``` r
-ggseg3d(atlas = jhu_labels())
+plot(jhu_wm())
 ```
 
-<img src="man/figures/README-jhu-labels-1.png" style="width:100.0%" />
+<img src="man/figures/README-jhu-wm-1.png" style="width:100.0%" />
 
-``` r
-ggseg3d(atlas = icbm())
-```
+Both atlases also carry 3D geometry, for `ggseg3d::ggseg3d()`.
 
-<img src="man/figures/README-icbm-1.png" style="width:100.0%" />
+## Data source
+
+Data obtained from the [FSL standard-space
+atlases](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases), which ship the
+JHU white-matter tractography atlas and the ICBM-DTI-81 labels in
+`$FSLDIR/data/atlases/JHU/`.

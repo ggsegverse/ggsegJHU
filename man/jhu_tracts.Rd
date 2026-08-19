@@ -7,15 +7,24 @@
 jhu_tracts()
 }
 \value{
-A \link[ggseg.formats:ggseg_atlas]{ggseg.formats::ggseg_atlas} object (subcortical).
+A \link[ggseg.formats:ggseg_atlas]{ggseg.formats::ggseg_atlas} object (tract).
 }
 \description{
-JHU probabilistic white matter tract atlas with 20 tracts,
-thresholded at 25\% probability. Contains 3D mesh geometry
-for \code{\link[ggseg3d:ggseg3d]{ggseg3d::ggseg3d()}}.
+JHU probabilistic white matter tract atlas with 20 tracts. Each tract is
+reduced to a principal-curve centerline, drawn as a 3D tube for
+\code{\link[ggseg3d:ggseg3d]{ggseg3d::ggseg3d()}} and as a 2D projection over an anatomical silhouette.
+}
+\details{
+Tracts are built from the atlas's probabilistic maps rather than FSL's
+distributed winner-take-all volume, in which tracts sharing a corridor
+erode each other: the temporal part of the superior longitudinal
+fasciculus survives there as 76 voxels of a bundle spanning several
+centimetres. Left and right of a tract share a colour, since they are the
+same anatomy.
 }
 \examples{
 jhu_tracts()
+plot(jhu_tracts())
 }
 \references{
 Hua K, et al. (2008). Tract probability maps in
