@@ -2,6 +2,11 @@
 
 ## Breaking changes
 
+- **`jhu()` is removed.** It was an 11-region unified atlas that collapsed the
+  tracts and merged the hemispheres. `jhu_tracts()` covers the same anatomy at
+  full resolution (20 tracts, hemispheres separate) and `jhu_wm()` carries the
+  48-region ICBM-DTI-81 parcellation, so `jhu()` only ever offered a coarser
+  view of data both accessors already provide.
 - `jhu_tracts()` is now a **tract** atlas (`atlas_type()` returns `"tract"`,
   and the object is a `tract_atlas`) rather than a subcortical one. Each
   tract carries a principal-curve centerline, drawn as a 3D tube for
