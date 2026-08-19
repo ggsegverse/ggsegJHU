@@ -12,3 +12,4 @@
 ^pkgdown$
 ^codemeta\.json$
 \.impeccable$
+^\.lintr$
