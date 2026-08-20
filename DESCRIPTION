@@ -32,7 +32,7 @@ Suggests:
     vdiffr
 Remotes:
     ggsegverse/ggseg,
-    ggsegverse/ggseg.formats
+    ggsegverse/ggseg.formats@feat/view-select-centerlines
 URL: https://github.com/ggsegverse/ggsegJHU
 BugReports: https://github.com/ggsegverse/ggsegJHU/issues
 Roxygen: list(markdown = TRUE)
