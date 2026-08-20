@@ -21,7 +21,7 @@ Encoding: UTF-8
 Depends:
     R (>= 3.5)
 Imports:
-    ggseg.formats
+    ggseg.formats (>= 0.0.4.9004)
 Suggests:
     ggseg,
     ggseg3d,
@@ -31,10 +31,17 @@ Suggests:
     testthat (>= 3.0.0),
     vdiffr
 Remotes:
-    ggsegverse/ggseg
+    ggsegverse/ggseg,
+    ggsegverse/ggseg.formats
 URL: https://github.com/ggsegverse/ggsegJHU
 BugReports: https://github.com/ggsegverse/ggsegJHU/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
 Config/Needs/website: ggsegverse/ggseg.docs
+Config/Needs/lint:
+    dplyr,
+    tidyverse,
+    RNifti,
+    ggseg,
+    ggsegverse/ggseg.extra
