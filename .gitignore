@@ -3,6 +3,13 @@
 .RData
 .Ruserdata
 docs/
+
+# Build and check artefacts. Rplots.pdf is what R CMD check flags as a
+# non-standard top-level file.
+Rplots.pdf
+*.Rcheck/
+*.tar.gz
+
 data-raw/**/*.nii
 data-raw/**/*.nii.gz
 data-raw/**/*.mgz
