@@ -1,10 +1,9 @@
-#' ICBM-DTI-81 White Matter Atlases
+#' ICBM-DTI-81 White Matter Atlas
 #'
-#' White matter label atlases derived from the ICBM DTI-81
-#' probabilistic atlas of 81 normal subjects.
-#'
-#' `jhu_wm()` provides the full 48-region atlas with both 2D and
-#' 3D geometry. `icbm()` is a legacy variant with 3D geometry only.
+#' White matter label atlas derived from the ICBM DTI-81
+#' probabilistic atlas of 81 normal subjects, with 48 regions
+#' projected onto the FreeSurfer `cvs_avg35_inMNI152` anatomical
+#' grid for cortical-reference context and smoother boundaries.
 #'
 #' @family ggseg_atlases
 #' @family tract_atlases
@@ -21,10 +20,5 @@
 #' @export
 #' @examples
 #' jhu_wm()
+#' plot(jhu_wm())
 jhu_wm <- function() .jhu_wm
-
-#' @rdname jhu_wm
-#' @export
-#' @examples
-#' icbm()
-icbm <- function() .icbm

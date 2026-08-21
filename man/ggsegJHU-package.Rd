@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-JHU and ICBM white matter atlases for the 'ggseg' ecosystem. Includes JHU probabilistic tracts (Hua et al. 2008), ICBM-DTI-81 white matter labels (Mori et al. 2005), and ICBM tract meshes. Provides unified 'ggseg_atlas' objects with 3D mesh geometry, for use with 'ggseg3d'.
+JHU and ICBM white matter atlases for the 'ggseg' ecosystem. Includes the JHU probabilistic tract atlas (Hua et al. 2008), built from its probabilistic maps as a tract atlas with a centerline per tract, and the ICBM-DTI-81 white matter labels (Mori et al. 2005). Both are coregistered to the FreeSurfer 'cvs_avg35_inMNI152' template so 2D slices show cortical reference outlines, and ship as 'ggseg_atlas' objects with 3D geometry for use with 'ggseg3d'.
 }
 \seealso{
 Useful links:

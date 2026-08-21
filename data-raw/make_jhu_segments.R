@@ -34,10 +34,8 @@ progressr::handlers("cli")
 progressr::handlers(global = TRUE)
 
 # ── Obtain JHU ICBM-DTI-81 labels volume ─────────────────────────
-# The JHU labels atlas ships with FSL. If FSL is installed:
-# fsl_dir <- Sys.getenv("FSLDIR")
-# vol_file <- file.path(fsl_dir, "data", "atlases", "JHU",
-#                        "JHU-ICBM-labels-1mm.nii.gz")
+# The JHU labels atlas ships with FSL. If FSL is installed, the volume is at
+# JHU-ICBM-labels-1mm.nii.gz under data/atlases/JHU in $FSLDIR.
 #
 # Otherwise download from NeuroVault or place manually:
 
@@ -46,14 +44,20 @@ vol_file <- here::here("data-raw", "JHU-ICBM-labels-1mm.nii.gz")
 if (!file.exists(vol_file)) {
   cli::cli_alert_info("Downloading JHU ICBM-DTI-81 labels atlas")
   fsl_dir <- Sys.getenv("FSLDIR")
-  fsl_path <- file.path(fsl_dir, "data", "atlases", "JHU",
-                         "JHU-ICBM-labels-1mm.nii.gz")
+  fsl_path <- file.path(
+    fsl_dir,
+    "data",
+    "atlases",
+    "JHU",
+    "JHU-ICBM-labels-1mm.nii.gz"
+  )
   if (file.exists(fsl_path)) {
     file.copy(fsl_path, vol_file)
   } else {
     cli::cli_abort(c(
       "JHU labels volume not found",
-      "i" = "Copy from FSL: {.path $FSLDIR/data/atlases/JHU/JHU-ICBM-labels-1mm.nii.gz}",
+      "i" = "Copy from FSL: \\
+             {.path $FSLDIR/data/atlases/JHU/JHU-ICBM-labels-1mm.nii.gz}",
       "i" = "Or download from: {.url https://neurovault.org/collections/262/}"
     ))
   }
@@ -84,10 +88,13 @@ if (file.exists(sysdata_path)) {
   existing_pals <- brain_pals
 }
 
-brain_pals <- c(existing_pals, stats::setNames(
-  list(jhu_seg$palette),
-  jhu_seg$atlas
-))
+brain_pals <- c(
+  existing_pals,
+  stats::setNames(
+    list(jhu_seg$palette),
+    jhu_seg$atlas
+  )
+)
 save(brain_pals, file = sysdata_path, compress = "xz")
 
 usethis::use_data(jhu_seg, overwrite = TRUE, compress = "xz")

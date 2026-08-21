@@ -15,7 +15,7 @@ idx	label	region	hemi	group
 14	ilf	inferior longitudinal fasciculus	right	association
 15	slf	superior longitudinal fasciculus	left	association
 16	slf	superior longitudinal fasciculus	right	association
-17	sltf	superior longitudinal fasciculus (temporal)	left	association
-18	sltf	superior longitudinal fasciculus (temporal)	right	association
-19	uncf	uncinate fasciculus	left	association
-20	uncf	uncinate fasciculus	right	association
+17	uncf	uncinate fasciculus	left	association
+18	uncf	uncinate fasciculus	right	association
+19	sltf	superior longitudinal fasciculus (temporal)	left	association
+20	sltf	superior longitudinal fasciculus (temporal)	right	association

@@ -3,5 +3,6 @@
 "_PACKAGE"
 
 globalVariables(c(
-  ".jhu_tracts", ".jhu_wm", ".icbm"
+  ".jhu_tracts",
+  ".jhu_wm"
 ))

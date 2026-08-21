@@ -3,6 +3,25 @@
 .RData
 .Ruserdata
 docs/
+
+# Build and check artefacts. Rplots.pdf is what R CMD check flags as a
+# non-standard top-level file.
+Rplots.pdf
+*.Rcheck/
+*.tar.gz
+
 data-raw/**/*.nii
 data-raw/**/*.nii.gz
 data-raw/**/*.mgz
+
+# Pipeline working directories. These are caches keyed by build step, tens of
+# megabytes of PNG snapshots and meshes, and are reproducible from the scripts
+# in data-raw/. They are also what makes a rebuild silently reuse stale
+# geometry, so they should never travel with the repo.
+data-raw/jhu_wm/
+data-raw/jhu_tracts/
+
+# Intermediate atlas objects and the LUTs generated from metadata/*.tsv.
+data-raw/*.rds
+data-raw/metadata/*_lut.tsv
+data-raw/metadata/*_lut_shifted.txt
