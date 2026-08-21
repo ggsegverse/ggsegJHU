@@ -1,14 +1,14 @@
-# ICBM-DTI-81 White Matter Atlases
+# ICBM-DTI-81 White Matter Atlas
 
-White matter label atlases derived from the ICBM DTI-81 probabilistic
-atlas of 81 normal subjects.
+White matter label atlas derived from the ICBM DTI-81 probabilistic
+atlas of 81 normal subjects, with 48 regions projected onto the
+FreeSurfer `cvs_avg35_inMNI152` anatomical grid for cortical-reference
+context and smoother boundaries.
 
 ## Usage
 
 ``` r
 jhu_wm()
-
-icbm()
 ```
 
 ## Value
@@ -16,11 +16,6 @@ icbm()
 A
 [ggseg.formats::ggseg_atlas](https://ggsegverse.github.io/ggseg.formats/reference/ggseg_atlas.html)
 object (subcortical).
-
-## Details
-
-`jhu_wm()` provides the full 48-region atlas with both 2D and 3D
-geometry. `icbm()` is a legacy variant with 3D geometry only.
 
 ## References
 
@@ -43,7 +38,28 @@ Other tract_atlases:
 
 ``` r
 jhu_wm()
-#> Error in jhu_wm(): could not find function "jhu_wm"
-icbm()
-#> Error in icbm(): could not find function "icbm"
+#> 
+#> ── jhu_wm ggseg atlas ──────────────────────────────────────────────────────────
+#> Type: subcortical
+#> Regions: 27
+#> Hemispheres: midline, right, left
+#> Views: axial_inferior, axial_middle, axial_superior, coronal_anterior,
+#> coronal_middle, coronal_posterior, sagittal_left, sagittal_mid, sagittal_right
+#> Palette: ✔
+#> Rendering: ✔ ggseg
+#> ✔ ggseg3d (meshes)
+#> ────────────────────────────────────────────────────────────────────────────────
+#>       hemi                      region    label      group
+#> 1  midline  middle cerebellar peduncle      mcp  brainstem
+#> 2  midline      pontine crossing tract      pct  brainstem
+#> 3  midline     genu of corpus callosum      gcc commissure
+#> 4  midline     body of corpus callosum      bcc commissure
+#> 5  midline splenium of corpus callosum      scc commissure
+#> 6  midline    fornix (column and body)   fornix     limbic
+#> 7    right         corticospinal tract   rh_cst projection
+#> 8     left         corticospinal tract   lh_cst projection
+#> 9    right            medial lemniscus rh_mlemn  brainstem
+#> 10    left            medial lemniscus lh_mlemn  brainstem
+#> ... with 38 more rows
+plot(jhu_wm())
 ```

@@ -1,69 +1,55 @@
 # ggsegJHU
 
-This package provides JHU and ICBM white matter atlases for ggseg.
+This package provides JHU and ICBM white matter atlases formatted for
+use with [ggseg](https://ggseg.github.io/ggseg/) and
+[ggseg3d](https://ggseg.github.io/ggseg3d/).
+
+| Atlas | Function | Regions | Reference |
+|----|----|----|----|
+| JHU Tracts | [`jhu_tracts()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_tracts.md) | 20 tracts | Hua et al. (2008) |
+| JHU ICBM-DTI-81 Labels | [`jhu_wm()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_wm.md) | 48 regions | Mori et al. (2005) |
+
+To learn how to use these atlases, please look at the documentation for
+[ggseg](https://ggseg.github.io/ggseg/) and
+[ggseg3d](https://ggseg.github.io/ggseg3d/).
 
 ## Installation
 
-We recommend installing the ggseg-atlases through the ggseg
-[r-universe](https://ggseg.r-universe.dev/ui#builds):
+You can install ggsegJHU from [GitHub](https://github.com/) with:
 
 ``` r
-options(repos = c(
-  ggseg = "https://ggseg.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
 
-install.packages("ggsegJHU")
+# install.packages("remotes")
+remotes::install_github("ggsegverse/ggsegJHU")
 ```
 
-You can install this package from [GitHub](https://github.com/) with:
+## Atlases
 
 ``` r
-# install.packages("pak")
-pak::pak("ggsegverse/ggsegJHU")
-```
 
-## JHU tracts
-
-``` r
-library(ggseg)
 library(ggsegJHU)
-library(ggplot2)
 
-ggplot() +
-  geom_brain(
-    atlas = jhu_tracts(),
-    mapping = aes(fill = label),
-    show.legend = FALSE
-  ) +
-  theme_void()
+plot(jhu_tracts())
 ```
 
 ![](reference/figures/README-jhu-tracts-1.png)
 
-## JHU white matter labels
-
 ``` r
-ggplot() +
-  geom_brain(
-    atlas = jhu_wm(),
-    mapping = aes(fill = label),
-    show.legend = FALSE
-  ) +
-  theme_void()
+
+plot(jhu_wm())
 ```
 
 ![](reference/figures/README-jhu-wm-1.png)
 
+Both atlases also carry 3D geometry, for
+[`ggseg3d::ggseg3d()`](https://ggsegverse.github.io/ggseg3d/reference/ggseg3d.html).
+
 ## Data source
 
-Hua K, Zhang J, Wakana S, Jiang H, Li X, Reich DS, Calabresi PA, Pekar
-JJ, van Zijl PCM, & Mori S (2008). Tract probability maps in stereotaxic
-spaces: Analyses of white matter anatomy and tract-specific
-quantification. *NeuroImage*, 39(1), 336-347.
-
-Mori S, Wakana S, van Zijl PCM, & Nagae-Poetscher LM (2005). *MRI Atlas
-of Human White Matter*. Elsevier.
+Data obtained from the [FSL standard-space
+atlases](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases), which ship the
+JHU white-matter tractography atlas and the ICBM-DTI-81 labels in
+`$FSLDIR/data/atlases/JHU/`.
 
 # Package index
 
@@ -71,11 +57,8 @@ of Human White Matter*. Elsevier.
 
 JHU and ICBM white matter atlases
 
-- [`jhu()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu.md) :
-  JHU White Matter Tract Atlas
 - [`jhu_tracts()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_tracts.md)
   : JHU White Matter Tract Atlas
 - [`jhu_wm()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_wm.md)
-  [`icbm()`](https://ggsegverse.github.io/ggsegJHU/reference/jhu_wm.md)
-  : ICBM-DTI-81 White Matter Atlases
+  : ICBM-DTI-81 White Matter Atlas
 

@@ -14,13 +14,13 @@ Source:
 [`DESCRIPTION`](https://github.com/ggsegverse/ggsegJHU/blob/main/DESCRIPTION)
 
 Mowinckel A, Vidal-Piñeiro D (2026). *ggsegJHU: JHU White Matter Atlases
-for the 'ggseg' Ecosystem*. R package version 2.0.0,
+for the 'ggseg' Ecosystem*. R package version 3.0.0,
 <https://github.com/ggsegverse/ggsegJHU>.
 
     @Manual{,
       title = {ggsegJHU: JHU White Matter Atlases for the 'ggseg' Ecosystem},
       author = {Athanasia Mo Mowinckel and Didac Vidal-Piñeiro},
       year = {2026},
-      note = {R package version 2.0.0},
+      note = {R package version 3.0.0},
       url = {https://github.com/ggsegverse/ggsegJHU},
     }
