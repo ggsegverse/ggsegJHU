@@ -36,12 +36,11 @@ Sys.setenv(SUBJECTS_DIR = file.path(fs_home, "subjects"))
 target_subject <- "cvs_avg35_inMNI152"
 id_offset <- 200L
 
-# Higher snapshot resolution + more contour smoothing reduces the
-# voxel-grid stair-stepping in the 2D outlines. The default 800x800
-# raster gives ~3 pixels per voxel which is right at the aliasing
-# limit; 1600 halves the stair amplitude.
+# Higher snapshot resolution reduces the voxel-grid stair-stepping in the
+# 2D outlines. The default 800x800 raster gives ~3 pixels per voxel which is
+# right at the aliasing limit; 1600 halves the stair amplitude. Contour
+# smoothing is now a post-creation step (atlas_smooth(), below).
 options(ggseg.extra.snapshot_dim = 1600)
-options(ggseg.extra.smoothness = 12)
 
 # FSL ships no colour lookup table for these atlases, so the palette is ours
 # to choose. Colour is assigned per structure, with left and right sharing a
@@ -173,7 +172,7 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
   prep <- project_volume_anatomical(
     input_volume = input_volume,
     lut = lut_df,
-    registration = NULL,
+    registration = "header",
     target_subject = target_subject,
     id_offset = id_offset,
     # These are white-matter labels. The default guard protects cortex *and*
