@@ -36,12 +36,11 @@ Sys.setenv(SUBJECTS_DIR = file.path(fs_home, "subjects"))
 target_subject <- "cvs_avg35_inMNI152"
 id_offset <- 200L
 
-# Higher snapshot resolution + more contour smoothing reduces the
-# voxel-grid stair-stepping in the 2D outlines. The default 800x800
-# raster gives ~3 pixels per voxel which is right at the aliasing
-# limit; 1600 halves the stair amplitude.
+# Higher snapshot resolution reduces the voxel-grid stair-stepping in the
+# 2D outlines. The default 800x800 raster gives ~3 pixels per voxel which is
+# right at the aliasing limit; 1600 halves the stair amplitude. Contour
+# smoothing is now a post-creation step (atlas_smooth(), below).
 options(ggseg.extra.snapshot_dim = 1600)
-options(ggseg.extra.smoothness = 12)
 
 # FSL ships no colour lookup table for these atlases, so the palette is ours
 # to choose. Colour is assigned per structure, with left and right sharing a
@@ -100,7 +99,7 @@ enrich_core <- function(atlas, meta_path) {
     # nolint next: object_usage_linter. dplyr NSE column reference.
     mutate(hemi = coalesce(hemi_meta, hemi)) |>
     # nolint next: object_usage_linter. dplyr NSE column reference.
-    select(hemi, region, label, group)
+    select(hemi, region, label, display, group)
 
   ggseg_atlas(
     atlas = atlas$atlas,
@@ -173,7 +172,7 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
   prep <- project_volume_anatomical(
     input_volume = input_volume,
     lut = lut_df,
-    registration = NULL,
+    registration = "header",
     target_subject = target_subject,
     id_offset = id_offset,
     # These are white-matter labels. The default guard protects cortex *and*
@@ -211,28 +210,21 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
   )
   write_lut(atlas_lut, shifted_lut_path)
 
-  # The volume the pipeline reads holds the aparc+aseg anatomy the atlas was
-  # projected into as well as the atlas's own labels, and structures are
-  # enumerated from the volume rather than the LUT. Name the atlas's own labels
-  # as the focus so everything else stays grey anatomical context instead of
-  # being promoted to an atlas region.
-  focus <- paste0(
-    "^(",
-    paste(atlas_lut$label, collapse = "|"),
-    ")$"
-  )
-
+  # The volume holds the aparc+aseg anatomy the atlas was projected into as
+  # well as the atlas's own labels, and the LUT lists only the latter. Every
+  # unlisted label therefore comes back as `context_<id>`; the grey backdrop
+  # is drawn from the cortex reference slices instead, so drop them.
   raw <- create_subcortical_from_volume(
     input_volume = prep$volume,
     input_lut = shifted_lut_path,
     atlas_name = atlas_name,
     slabs = jhu_views,
-    context = list(focus = focus, match_on = "label"),
     output_dir = "data-raw",
     skip_existing = TRUE,
     cleanup = FALSE,
     verbose = TRUE
-  )
+  ) |>
+    atlas_region_remove("^context_[0-9]+$", match_on = "label")
 
   enrich_core(raw, meta_path)
 }
