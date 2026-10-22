@@ -208,12 +208,23 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
   stopifnot(
     "shifted LUT must cover every atlas label" = nrow(atlas_lut) == nrow(meta)
   )
+  # The pipeline draws only what this table declares, so the backdrop has to
+  # be declared too. The aparc ribbon, the cerebellar cortex and the
+  # brainstem are one `cortex` silhouette; white matter and the ventricles
+  # stay undeclared, which is what leaves the ribbon hollow rather than
+  # filling it into a solid mass.
+  atlas_lut$context <- NA_character_
+  anatomy <- prep$lut[!prep$lut$idx %in% atlas_ids, , drop = FALSE]
+  ribbon <- anatomy[
+    anatomy$idx %in% c(1000:2999, 8L, 47L, 16L), ,
+    drop = FALSE
+  ]
+  if (nrow(ribbon) > 0) {
+    ribbon$context <- "cortex"
+    atlas_lut <- rbind(atlas_lut, ribbon[, names(atlas_lut), drop = FALSE])
+  }
   write_lut(atlas_lut, shifted_lut_path)
 
-  # The volume holds the aparc+aseg anatomy the atlas was projected into as
-  # well as the atlas's own labels, and the LUT lists only the latter. Every
-  # unlisted label therefore comes back as `context_<id>`; the grey backdrop
-  # is drawn from the cortex reference slices instead, so drop them.
   raw <- create_subcortical_from_volume(
     input_volume = prep$volume,
     input_lut = shifted_lut_path,
@@ -223,8 +234,7 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
     skip_existing = TRUE,
     cleanup = FALSE,
     verbose = TRUE
-  ) |>
-    atlas_region_remove("^context_[0-9]+$", match_on = "label")
+  )
 
   enrich_core(raw, meta_path)
 }
@@ -286,7 +296,18 @@ jhu_wm <- jhu_wm |>
     smoothness = 0.6,
     method = "ksmooth",
     labels = "^cortex"
-  )
+  ) |>
+  # Four slabs of the nine. Measured per view, axial_inferior draws 12 of the
+  # 48 regions across 16% of its panel, and the outer coronal slabs 32% each.
+  # One sagittal is enough, and it has to be the midline one: `sagittal_mid`
+  # draws 25 regions and leaves only the uncinate fasciculus undrawn, where
+  # either outer slab draws 14-16 and leaves eight.
+  atlas_view_keep(c(
+    "axial_superior",
+    "axial_middle",
+    "coronal_middle",
+    "sagittal_mid"
+  ))
 
 .jhu_tracts <- jhu_tracts
 .jhu_wm <- jhu_wm
