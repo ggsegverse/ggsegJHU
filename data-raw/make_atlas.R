@@ -283,19 +283,19 @@ jhu_wm <- jhu_wm |>
   atlas_view_remove_small(
     min_area = 20,
     scope = "piece",
-    exclude = "^cortex"
+    exclude = context()
   ) |>
-  atlas_simplify(keep = 0.4, labels = "^cortex") |>
-  atlas_simplify(keep = 0.2, exclude = "^cortex") |>
+  atlas_simplify(keep = 0.4, labels = context()) |>
+  atlas_simplify(keep = 0.2, exclude = context()) |>
   atlas_smooth(
     smoothness = 0.8,
     method = "close",
-    exclude = "^cortex"
+    exclude = context()
   ) |>
   atlas_smooth(
     smoothness = 0.6,
     method = "ksmooth",
-    labels = "^cortex"
+    labels = context()
   ) |>
   # Four slabs of the nine. Measured per view, axial_inferior draws 12 of the
   # 48 regions across 16% of its panel, and the outer coronal slabs 32% each.
