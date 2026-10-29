@@ -36,12 +36,11 @@ Sys.setenv(SUBJECTS_DIR = file.path(fs_home, "subjects"))
 target_subject <- "cvs_avg35_inMNI152"
 id_offset <- 200L
 
-# Higher snapshot resolution + more contour smoothing reduces the
-# voxel-grid stair-stepping in the 2D outlines. The default 800x800
-# raster gives ~3 pixels per voxel which is right at the aliasing
-# limit; 1600 halves the stair amplitude.
+# Higher snapshot resolution reduces the voxel-grid stair-stepping in the
+# 2D outlines. The default 800x800 raster gives ~3 pixels per voxel which is
+# right at the aliasing limit; 1600 halves the stair amplitude. Contour
+# smoothing is now a post-creation step (atlas_smooth(), below).
 options(ggseg.extra.snapshot_dim = 1600)
-options(ggseg.extra.smoothness = 12)
 
 # FSL ships no colour lookup table for these atlases, so the palette is ours
 # to choose. Colour is assigned per structure, with left and right sharing a
@@ -100,7 +99,7 @@ enrich_core <- function(atlas, meta_path) {
     # nolint next: object_usage_linter. dplyr NSE column reference.
     mutate(hemi = coalesce(hemi_meta, hemi)) |>
     # nolint next: object_usage_linter. dplyr NSE column reference.
-    select(hemi, region, label, group)
+    select(hemi, region, label, display, group)
 
   ggseg_atlas(
     atlas = atlas$atlas,
@@ -173,7 +172,7 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
   prep <- project_volume_anatomical(
     input_volume = input_volume,
     lut = lut_df,
-    registration = NULL,
+    registration = "header",
     target_subject = target_subject,
     id_offset = id_offset,
     # These are white-matter labels. The default guard protects cortex *and*
@@ -209,25 +208,28 @@ build_jhu_atlas <- function(input_volume, atlas_name, meta_path) {
   stopifnot(
     "shifted LUT must cover every atlas label" = nrow(atlas_lut) == nrow(meta)
   )
+  # The pipeline draws only what this table declares, so the backdrop has to
+  # be declared too. The aparc ribbon, the cerebellar cortex and the
+  # brainstem are one `cortex` silhouette; white matter and the ventricles
+  # stay undeclared, which is what leaves the ribbon hollow rather than
+  # filling it into a solid mass.
+  atlas_lut$context <- NA_character_
+  anatomy <- prep$lut[!prep$lut$idx %in% atlas_ids, , drop = FALSE]
+  ribbon <- anatomy[
+    anatomy$idx %in% c(1000:2999, 8L, 47L, 16L), ,
+    drop = FALSE
+  ]
+  if (nrow(ribbon) > 0) {
+    ribbon$context <- "cortex"
+    atlas_lut <- rbind(atlas_lut, ribbon[, names(atlas_lut), drop = FALSE])
+  }
   write_lut(atlas_lut, shifted_lut_path)
-
-  # The volume the pipeline reads holds the aparc+aseg anatomy the atlas was
-  # projected into as well as the atlas's own labels, and structures are
-  # enumerated from the volume rather than the LUT. Name the atlas's own labels
-  # as the focus so everything else stays grey anatomical context instead of
-  # being promoted to an atlas region.
-  focus <- paste0(
-    "^(",
-    paste(atlas_lut$label, collapse = "|"),
-    ")$"
-  )
 
   raw <- create_subcortical_from_volume(
     input_volume = prep$volume,
     input_lut = shifted_lut_path,
     atlas_name = atlas_name,
     slabs = jhu_views,
-    context = list(focus = focus, match_on = "label"),
     output_dir = "data-raw",
     skip_existing = TRUE,
     cleanup = FALSE,
@@ -281,22 +283,31 @@ jhu_wm <- jhu_wm |>
   atlas_view_remove_small(
     min_area = 20,
     scope = "piece",
-    exclude = "^cortex"
+    exclude = context()
   ) |>
+  atlas_simplify(keep = 0.4, labels = context()) |>
+  atlas_simplify(keep = 0.2, exclude = context()) |>
   atlas_smooth(
-    keep = 1,
     smoothness = 0.8,
     method = "close",
-    exclude = "^cortex"
+    exclude = context()
   ) |>
   atlas_smooth(
-    keep = 1,
     smoothness = 0.6,
     method = "ksmooth",
-    labels = "^cortex"
+    labels = context()
   ) |>
-  atlas_smooth(keep = 0.4, labels = "^cortex") |>
-  atlas_smooth(keep = 0.2, exclude = "^cortex")
+  # Four slabs of the nine. Measured per view, axial_inferior draws 12 of the
+  # 48 regions across 16% of its panel, and the outer coronal slabs 32% each.
+  # One sagittal is enough, and it has to be the midline one: `sagittal_mid`
+  # draws 25 regions and leaves only the uncinate fasciculus undrawn, where
+  # either outer slab draws 14-16 and leaves eight.
+  atlas_view_keep(c(
+    "axial_superior",
+    "axial_middle",
+    "coronal_middle",
+    "sagittal_mid"
+  ))
 
 .jhu_tracts <- jhu_tracts
 .jhu_wm <- jhu_wm
